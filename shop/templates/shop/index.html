@@ -43,6 +43,9 @@
               <h5 class="card-title">{{i.product_name}}</h5>
               <h6 class="card-text">{{i.desc}}</h6>
               <button id="pr{{i.id}}" class="btn-success rounded-pill cart"><i class="fa fa-shopping-cart"></i>Add To Cart</button>
+              <a href="/shop/products/{{i.id}}">
+              <button id="qv{{i.id}}" class="btn-primary rounded-pill cart">Quick View</button>
+              </a>
             </div>
           </div>
         </div>
@@ -70,11 +73,18 @@
 </section>
 <!--category wais-->
 
-{% endblock body %} {% block js %}
+{% endblock body %} 
+
+{% block js %}
 <script src="/static/js/index.js"></script>
 <script>
-$('#popcart').popover('show');
-document.getElementById('popcart').setAttribute('data-content', '<h1>Cart npw ghuytr looifgg</h1>');
+$(document).ready(function(){
+    $("#popcart").popover({
+        title: '<h3 class="text-light"><i class="fa fa-info-circle"></i> Popover Info</h3>',
+        content: '<p>This is a <em>simple example</em> demonstrating how to insert HTML code inside <mark><strong>Bootstrap popover</strong></mark>.</p>',
+        html: true
+    }); 
+});
 </script>
 
 {% endblock js %}

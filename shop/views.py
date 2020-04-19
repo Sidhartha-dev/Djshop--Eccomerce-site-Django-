@@ -37,8 +37,8 @@ def about(request):
     # return render(request, 'shop/contact.html')
     # return HttpResponse("Index Contact")
 
-# def tracker(request):
-#     #return render(request, 'shop/tracker.html')
+def tracker(request):
+    return render(request, 'shop/tracker.html')
 #     return HttpResponse("Index Contact")
 
 # def search(request):
@@ -46,8 +46,9 @@ def about(request):
 #     return HttpResponse("Index Contact")
 
 
-# def productview(request):
-#     #return render(request, 'shop/search.html')
+def productView(request, id):
+    #fetch product using id
+    return render(request, 'shop/prodView.html')
 #     return HttpResponse("Index Contact")
 
 
