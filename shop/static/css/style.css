@@ -93,3 +93,9 @@ body .no-padding {
   padding-left: 0;
   padding-right: 0;
 }
+
+img.maxpro{
+    height: 300px;
+    width: 280px;
+    margin-bottom: 50px;
+}

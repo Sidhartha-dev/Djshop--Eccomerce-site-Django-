@@ -46,9 +46,10 @@ def tracker(request):
 #     return HttpResponse("Index Contact")
 
 
-def productView(request, id):
+def productView(request, myid):
     #fetch product using id
-    return render(request, 'shop/prodView.html')
+    product = Product.objects.filter(id=myid)
+    return render(request, 'shop/prodView.html', {'product':product[0]})
 #     return HttpResponse("Index Contact")
 
 

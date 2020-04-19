@@ -41,10 +41,10 @@
             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{i.product_name}}</h5>
-              <h6 class="card-text">{{i.desc}}</h6>
-              <button id="pr{{i.id}}" class="btn-success rounded-pill cart"><i class="fa fa-shopping-cart"></i>Add To Cart</button>
+              <h6 class="card-text">{{i.desc|slice:'0:54'}}...</h6>
+              <button id="pr{{i.id}}" class="btn-success rounded-pill cart"><i class="fa fa-shopping-cart text-warning"></i>Add To Cart</button>
               <a href="/shop/products/{{i.id}}">
-              <button id="qv{{i.id}}" class="btn-primary rounded-pill cart">Quick View</button>
+              <button id="qv{{i.id}}" class="btn-primary rounded-pill cart"><i class="fa fa-eye text-danger"></i>Quick View</button>
               </a>
             </div>
           </div>
@@ -75,16 +75,3 @@
 
 {% endblock body %} 
 
-{% block js %}
-<script src="/static/js/index.js"></script>
-<script>
-$(document).ready(function(){
-    $("#popcart").popover({
-        title: '<h3 class="text-light"><i class="fa fa-info-circle"></i> Popover Info</h3>',
-        content: '<p>This is a <em>simple example</em> demonstrating how to insert HTML code inside <mark><strong>Bootstrap popover</strong></mark>.</p>',
-        html: true
-    }); 
-});
-</script>
-
-{% endblock js %}
