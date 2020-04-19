@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bra {
   background-image: linear-gradient(45deg, #00007d, #e015d3);
 }
 
-.bgs {
+/* .bgs {
   background-image: url("/static/img/bookbg.jpg");
   background-repeat: no-repeat;
   height: 100vh;
@@ -53,46 +53,43 @@ button.btn{
     background: #1501d2;
     margin-bottom: 50px;
     margin-left: 350px;
-    
+     
+} */
+
+.col-md-3 {
+  display: inline-block;
+  margin-left: -4px;
 }
 
- .col-md-3
-          {
-          display: inline-block;
-          margin-left:-4px;
-          }
+.carousel-indicators .active {
+  background-color: blue;
+}
 
-          .carousel-indicators .active {
-          background-color: blue;
-            }
+.col-md-3 img {
+  width: 180px;
+  height: 220px;
+}
 
-          .col-md-3 img{
+body .carousel-indicator li {
+  background-color: blue;
+}
 
-          width: 255px;
-          height: 355px;
-          }
+body .carousel-indicators {
+  bottom: 0;
+}
 
-          body .carousel-indicator li{
-          background-color: blue;
-          }
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+  background-color: blue;
+}
 
-          body .carousel-indicators{
-          bottom: 0;
-          }
-
-          body .carousel-control-prev-icon,
-          body .carousel-control-next-icon{
-          background-color: blue;
-          }
-
-          .carousel-control-prev,
-          .carousel-control-next{
-          top: auto;
-          bottom: auto;
-          }
-           body .no-padding{
-           padding-left: 0;
-           padding-right: 0;
-           }
-
-
+.carousel-control-prev,
+.carousel-control-next {
+  /* top: auto;
+           bottom: auto; */
+  padding-top: 220px;
+}
+body .no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}

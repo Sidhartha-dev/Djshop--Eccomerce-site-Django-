@@ -31,7 +31,7 @@ def index(request):
 
 def about(request):
     return render(request, 'shop/about.html')
-    # return HttpResponse("Index shop")
+    #return HttpResponse("Index shop")
 
 # def contact(request):
     # return render(request, 'shop/contact.html')

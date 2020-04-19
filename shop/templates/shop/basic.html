@@ -4,18 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
-    <title>DjShop|{% block title %}
-    {% endblock title %}</title>
+    <title>DjShop|{% block title %} {% endblock title %}</title>
   </head>
   <body>
     <section>
@@ -41,32 +37,18 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+              <a class="nav-link" href="/shop/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
-                >Disabled</a
-              >
+              <a class="nav-link" href="/shop/tracker">Track Product</a>
             </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+                ><i class="fa fa-shopping-cart text-warning"></i> cart
+                <span class="bg-danger text-light rounded-pill px-2" id="cart">
+                </span>
+              </a>
+            </li> -->
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input
@@ -76,18 +58,25 @@
               aria-label="Search"
             />
           </form>
+          <button type="button" class="btn btn-primary rounded-pill" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true"
+            data-content="data-content ghggg vhf">
+          <i class="fa fa-shopping-cart text-warning"></i>
+           Cart
+            <span
+              class="bg-danger text-light rounded-pill px-2 shadow-lg"
+              id="cart">
+            </span>
+          </button>
         </div>
       </nav>
     </section>
-{% block body %}
+    {% block body %} {% endblock body %}
 
-{% endblock body %}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-    {% block js %}
-    {% endblock js %}
+    {% block js %} {% endblock js %}
   </body>
 </html>
