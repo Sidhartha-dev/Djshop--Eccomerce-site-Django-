@@ -37,15 +37,18 @@
 
         {% for i in product %}
         <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 18rem;">
+          <div class="card align-items-center" style="width: 18rem;">
             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{i.product_name}}</h5>
               <h6 class="card-text">{{i.desc|slice:'0:54'}}...</h6>
+              <span id="divpr{{i.id}}" class="divpr">
               <button id="pr{{i.id}}" class="btn-success rounded-pill cart"><i class="fa fa-shopping-cart text-warning"></i>Add To Cart</button>
+              </span>
               <a href="/shop/products/{{i.id}}">
               <button id="qv{{i.id}}" class="btn-primary rounded-pill cart"><i class="fa fa-eye text-danger"></i>Quick View</button>
               </a>
+              
             </div>
           </div>
         </div>
