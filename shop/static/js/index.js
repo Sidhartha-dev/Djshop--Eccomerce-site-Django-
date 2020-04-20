@@ -20,8 +20,6 @@ $(".cart").click(function () {
   }
   updateCart(cart);
   //console.log(cart);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  document.getElementById("cart").innerHTML = Object.keys(cart).length;
 });
 
 function updateCart(cart) {
@@ -36,6 +34,28 @@ function updateCart(cart) {
       "</span> <button id='plus" +
       item +
       "' class='btn btn-primary rounded-pill shadow plus'> + </button>";
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("cart").innerHTML = Object.keys(cart).length;
+  console.log(cart);
+}
+
+$("#popcart").popover("show");
+updatePopover();
+function updatePopover(cart) {
+  console.log("update pop");
+  var popStr = "";
+  popStr = popStr + "<h5>Popover Info</h5>";
+  var i = 1;
+  for (var item in cart) {
+    popStr = popStr + "<b>" + i + "</b>";
+    popStr =
+      popStr +
+      document.getElementById("name" + item) +
+      "Qty:" +
+      cart["item"] +
+      "<br>";
+    i = i + 1;
   }
 }
 
