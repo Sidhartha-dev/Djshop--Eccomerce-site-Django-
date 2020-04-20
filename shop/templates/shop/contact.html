@@ -1,0 +1,47 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}
+Contact us- If any problem
+{% endblock title %}
+
+{% block body %}
+ <section class="cont">
+<img src="/static/img/bookbg.jpg" alt="code" class="contect-img">
+</section>
+<section>
+<div class="contact-form"> 
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+             <div class="card shadow-lg loi mx-5">
+                 <div class="card-header">
+                      <h1 class="text-center">Register</h1>
+                     </div>
+                 <div class="card-body">
+                     <form class="form-group row justify-content-center" method="post" action="/shop/contact/">
+                        {% csrf_token %} 
+                        <div class="col-md-8 mt-4">
+                             <input type="text" id="name" name="name" class="form-control rounded-pill " placeholder="Enter Name...">
+                        </div>
+
+                        <div class="col-md-8 mt-4">
+                             <input type="email" id="email" name="email" class="form-control rounded-pill" placeholder="Enter Email...">
+                        </div>
+
+                        <div class="col-md-8 mt-4">
+                              <input type="phone" id="phone" name="phone" class="form-control rounded-pill" placeholder="Enter Phone No...">
+                       </div>
+
+                       <div class="col-md-8 mt-4">
+                            <input type="text" id="message" name="message" class="form-control rounded-pill" placeholder="Enter Message...">
+                       </div>
+                       <div class="col-md-8 mt-4">
+                       <button class="btn btn-warning rounded-pill" type="submit" id="myBtn">Submit</button>
+                       </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
