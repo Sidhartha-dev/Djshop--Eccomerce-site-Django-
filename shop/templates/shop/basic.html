@@ -56,7 +56,8 @@
               aria-label="Search"
             />
           </form>
-          <button type="button" class="btn btn-primary btn-lg" id="popcart" data-toggle="popover"  data-placement="bottom">
+          <button type="button" id="popcart" class="btn btn-primary" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Vivamus
+          sagittis lacus vel augue laoreet rutrum faucibus.">
           <i class="fa fa-shopping-cart text-warning"></i>
            Cart
             <span
@@ -75,15 +76,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="/static/js/index.js"></script>
-{% comment %} <script>
-$(document).ready(function(){
-    $("#popcart").popover({
-        title: '<h3 class="text-success"><i class="fa fa-info-circle"></i> Popover Info</h3>',
-        content: '<p>This is a <em>simple example</em> demonstrating how to insert HTML code inside <mark><strong>Bootstrap popover</strong></mark>.</p>',
-        html: true
-    }); 
-});
-</script> {% endcomment %}
     {% block js %} 
     
     {% endblock js %}

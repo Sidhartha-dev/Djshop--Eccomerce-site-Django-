@@ -22,6 +22,29 @@ $(".cart").click(function () {
   //console.log(cart);
 });
 
+//add cart popover
+$("#popcart").popover();
+updatePopover(cart);
+function updatePopover(cart) {
+  console.log("update pop");
+  var popStr = "";
+  popStr = popStr + "<h5>Popover Info</h5>";
+  var i = 1;
+  for (var item in cart) {
+    popStr = popStr + "<b>" + i + "</b>";
+    popStr =
+      popStr +
+      document.getElementById("name" + item) +
+      "Qty:" +
+      cart["item"] +
+      "<br>";
+    i = i + 1;
+  }
+  console.log("popStr");
+  document.getElementById("popcart").setAttribute("data-content", popStr);
+  $("#popcart").popover("show");
+}
+
 function updateCart(cart) {
   for (var item in cart) {
     document.getElementById("div" + item).innerHTML =
@@ -40,24 +63,24 @@ function updateCart(cart) {
   console.log(cart);
 }
 
-$("#popcart").popover("show");
-updatePopover();
-function updatePopover(cart) {
-  console.log("update pop");
-  var popStr = "";
-  popStr = popStr + "<h5>Popover Info</h5>";
-  var i = 1;
-  for (var item in cart) {
-    popStr = popStr + "<b>" + i + "</b>";
-    popStr =
-      popStr +
-      document.getElementById("name" + item) +
-      "Qty:" +
-      cart["item"] +
-      "<br>";
-    i = i + 1;
-  }
-}
+// $("#popcart").popover();
+// updatePopover();
+// function updatePopover(cart) {
+//   console.log("update pop");
+//   var popStr = "";
+//   popStr = popStr + "<h5>Popover Info</h5>";
+//   var i = 1;
+//   for (var item in cart) {
+//     popStr = popStr + "<b>" + i + "</b>";
+//     popStr =
+//       popStr +
+//       document.getElementById("name" + item) +
+//       "Qty:" +
+//       cart["item"] +
+//       "<br>";
+//     i = i + 1;
+//   }
+// }
 
 //= plas minas button working trick
 $(".divpr").on("click", "button.minus", function () {
