@@ -1,36 +1,20 @@
 {% extends 'shop/basic.html' %} 
-{% block title %}
- Buy this Product- Djshop 
- {%endblock title %} 
- {% block body %}
+{% block title %} 
+Buy this Product- Djshop
+{%endblock title %} 
+{% block body %}
 <div class="container">
   <div class="col">
-    <h3 class="my-4">Step-1 DjShop Quick Checkout | Review The cart Items</h3>
-    <div id="items">
-      <ul class="list-group">
-        <li
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          Cras justo odio
-          <span class="badge badge-success badge-pill">14</span>
-        </li>
-        <li
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          Dapibus ac facilisis in
-          <span class="badge badge-success badge-pill">2</span>
-        </li>
-        <li
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          Morbi leo risus
-          <span class="badge badge-success badge-pill">1</span>
-        </li>
+    <h3 class="my-4">
+      <u>Step-1 DjShop Quick Checkout | Review The cart Items</u>
+    </h3>
+    <div class="my-4">
+      <ul class="list-group" id="items">
       </ul>
     </div>
   </div>
   <div class="col">
-    <h4 class="my-4">Step2| Enter Required Details:</h4>
+    <h2 class="my-4"><u>Step2| Enter Required Details:</u></h2>
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card shadow-lg loi mx-5">
@@ -38,65 +22,98 @@
             <h1 class="text-center">Checkout-</h1>
           </div>
           <div class="card-body">
-            <form>
+            <form method="POST" action="/shop/checkout">
+              {% csrf_token %}
+              <input type="hidden" name="itemsJson" id="itemsJson">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4" class="text-danger"><i class="fa fa-address-card"></i> Address-1</label>
+                  <label for="inputAddress" class="text-danger"
+                    ><i class="fa fa-address-card"></i> Address-1</label
+                  >
                   <input
                     type="text"
-                    class="form-control rounded-pill"
-                    id="inputEmail4"
+                    class="form-control rounded-pill shadow"
+                    id="inputAddress"
+                    placeholder="North KORea.."
                   />
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4" class="text-danger"><i class="fa fa-address-book"></i> Address-2</label>
+                  <label for="inputAddress2" class="text-danger"
+                    ><i class="fa fa-address-book"></i> Address-2</label
+                  >
                   <input
                     type="text"
-                    class="form-control rounded-pill"
-                    id="inputPassword4"
+                    class="form-control rounded-pill shadow"
+                    id="inputAddress2"
+                    placeholder="25 Road, Arizona City..."
                   />
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputAddress" class="text-danger"><i class="fa fa-user-circle"></i> Name</label>
+                <label for="inputName" class="text-danger"
+                  ><i class="fa fa-user-circle"></i> Name</label
+                >
                 <input
                   type="text"
-                  class="form-control rounded-pill"
-                  id="inputAddress"
-                  placeholder="1234 Main St"
+                  class="form-control rounded-pill shadow"
+                  id="inputName"
+                  placeholder="Enter Name..."
                 />
               </div>
               <div class="form-group">
-                <label for="inputAddress2" class="text-danger"><i class="fa fa-envelope"></i> Email</label>
+                <label for="inputEmail" class="text-danger"
+                  ><i class="fa fa-envelope"></i> Email</label
+                >
                 <input
-                  type="text"
-                  class="form-control rounded-pill"
-                  id="inputAddress2"
-                  placeholder="Apartment, studio, or floor"
+                  type="email"
+                  class="form-control rounded-pill shadow"
+                  id="inputEmail"
+                  placeholder="Enter Email..."
+                />
+              </div>
+              <div class="form-group">
+                <label for="inputPhone" class="text-danger"
+                  ><i class="fa fa-envelope"></i> Phone</label
+                >
+                <input
+                  type="number"
+                  class="form-control rounded-pill shadow"
+                  id="inputPhone"
+                  placeholder="Phone No..."
                 />
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputCity" class="text-danger"><i class="fa fa-road"></i> City</label>
+                  <label for="inputCity" class="text-danger"
+                    ><i class="fa fa-road"></i> City</label
+                  >
                   <input
                     type="text"
-                    class="form-control rounded-pill"
+                    class="form-control rounded-pill shadow"
                     id="inputCity"
+                    placeholder="Enter City..."
                   />
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="inputState" class="text-danger"><i class="fa fa-map"></i> State</label>
-                  <select id="inputState" class="form-control rounded-pill">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <label for="inputZip" class="text-danger"><i class="fa fa-fax"></i> Zip</label>
+                  <label for="inputState" class="text-danger"
+                    ><i class="fa fa-map"></i> State</label
+                  >
                   <input
                     type="text"
-                    class="form-control rounded-pill"
+                    class="form-control rounded-pill shadow"
+                    id="inputCity"
+                    placeholder="Enter State..."
+                  />
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip" class="text-danger"
+                    ><i class="fa fa-fax"></i> Zip</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control rounded-pill shadow"
                     id="inputZip"
+                    placeholder="Zip..."
                   />
                 </div>
               </div>
@@ -126,6 +143,33 @@
   </div>
 </div>
 
-{% block js %} 
-{% endblock js %} 
-{% endblock body %}
+{% block js %}
+<script>
+  if (localStorage.getItem("cart") == null) {
+    var cart = {};
+  } else {
+    cart = JSON.parse(localStorage.getItem("cart"));
+  }
+  console.log(cart);
+  var sum = 0;
+  if ($.isEmptyObject(cart)){
+    //if object is empty
+    mystr = '<h3 class="text-danger">Your cart Is empty, Add some items in your cart before checkout</h3>'
+    $('#items').append(mystr);
+  }else{
+   for(item in cart){
+     let name = cart[item][1];
+     let qty = cart[item][0];
+     sum = sum + qty;
+     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+       ${name}
+          <span class="badge badge-success badge-pill">${qty}</span>
+     </li>`
+
+     $('#items').append(mystr);
+   }
+  }
+
+  document.getElementById('cart').innerHTML = sum;
+</script>
+{% endblock js %} {% endblock body %}

@@ -14,9 +14,11 @@ $(".divpr").on("click", "button.cart", function () {
   var idstr = this.id.toString();
   //console.log(idstr);
   if (cart[idstr] != undefined) {
-    cart[idstr] = cart[idstr] + 1;
+    qty = cart[idstr] + 1;
   } else {
-    cart[idstr] = 1;
+    qty = 1;
+    name = document.getElementById("name" + idstr).innerHTML;
+    cart[idstr] = [qty, name];
   }
   updateCart(cart);
   //console.log(cart);
@@ -36,7 +38,7 @@ function updatePopover(cart) {
       popStr +
       document.getElementById("name" + item).innerHTML.slice(0, 18) +
       "...Qty:" +
-       cart[item] +
+      cart[item][0] +
       "<br>";
     i = i + 1;
   }
@@ -64,14 +66,14 @@ function clearCart() {
 function updateCart(cart) {
   var sum = 0;
   for (var item in cart) {
-    sum = sum + cart[item];
+    sum = sum + cart[item][0];
     document.getElementById("div" + item).innerHTML =
       "<button id='minus" +
       item +
       "' class='btn btn-warning rounded-pill shadow minus'>-</button> <span id='val" +
       item +
       "''>" +
-      cart[item] +
+      cart[item][0] +
       "</span> <button id='plus" +
       item +
       "' class='btn btn-primary rounded-pill shadow plus'> + </button>";
@@ -106,9 +108,9 @@ $(".divpr").on("click", "button.minus", function () {
   //console.log("minus mio");
   a = this.id.slice(7);
   //console.log(a);
-  cart["pr" + a] = cart["pr" + a] - 1;
-  cart["pr" + a] = Math.max(0, cart["pr" + a]);
-  document.getElementById("valpr" + a).innerHTML = cart["pr" + a];
+  cart["pr" + a][0] = cart["pr" + a][0] - 1;
+  cart["pr" + a][0] = Math.max(0, cart["pr" + a][0]);
+  document.getElementById("valpr" + a).innerHTML = cart["pr" + a][0];
   updateCart(cart);
 });
 
@@ -116,7 +118,7 @@ $(".divpr").on("click", "button.plus", function () {
   //console.log("plus clicked");
   a = this.id.slice(6);
   //console.log(a);
-  cart["pr" + a] = cart["pr" + a] + 1;
-  document.getElementById("valpr" + a).innerHTML = cart["pr" + a];
+  cart["pr" + a][0] = cart["pr" + a][0] + 1;
+  document.getElementById("valpr" + a).innerHTML = cart["pr" + a][0];
   updateCart(cart);
 });
