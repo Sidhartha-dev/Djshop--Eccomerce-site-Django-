@@ -63,6 +63,6 @@ def productView(request, myid):
 #     return HttpResponse("Index Contact")
 
 
-# def checkout(request):
-#     #return render(request, 'shop/checkout.html')
+def checkout(request):
+    return render(request, 'shop/checkout.html')
 #     return HttpResponse("Index Contact")

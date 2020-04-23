@@ -8,8 +8,9 @@ if (localStorage.getItem("cart") == null) {
 }
 
 //if click in add to cart then increment the item
-$(".cart").click(function () {
-  //console.log("clicked");
+//$(".cart").click(function () {
+//console.log("clicked");
+$(".divpr").on("click", "button.cart", function () {
   var idstr = this.id.toString();
   //console.log(idstr);
   if (cart[idstr] != undefined) {
@@ -27,7 +28,7 @@ updatePopover(cart);
 function updatePopover(cart) {
   console.log("update pop");
   var popStr = "";
-  popStr = popStr + "<h5>Popover Info</h5><div class='mx-2 my-2'>";
+  popStr = popStr + "<h5>Cart Info</h5><div class='mx-2 my-2'>";
   var i = 1;
   for (var item in cart) {
     popStr = popStr + "<b>" + i + "</b>";
@@ -35,14 +36,14 @@ function updatePopover(cart) {
       popStr +
       document.getElementById("name" + item).innerHTML.slice(0, 18) +
       "...Qty:" +
-      cart[item] +
+       cart[item] +
       "<br>";
     i = i + 1;
   }
 
   popStr =
     popStr +
-    "</div> <a href='/shop/checkout'><button class='btn btn-suceess rounded-pill shadow' id='checkout'> Checkout</button></a><button class='btn btn-danger rounded-pill shadow' onclick='clearCart' id='clearCart'>Remove cart</button>";
+    "</div><a href='/shop/checkout'><button class='btn btn-suceess rounded-pill shadow mt-5' id='checkout'>Checkout</button></a><button class='btn btn-danger rounded-pill shadow mt-5' onclick='clearCart' id='clearCart'>Remove cart</button>";
   console.log("popStr");
   document.getElementById("popcart").setAttribute("data-content", popStr);
   $("#popcart").popover("show");
