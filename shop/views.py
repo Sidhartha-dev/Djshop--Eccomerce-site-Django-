@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from .models import Contact
+from .models import Orders
 from django.http import HttpResponse
 from math import ceil
 
@@ -64,5 +65,19 @@ def productView(request, myid):
 
 
 def checkout(request):
-    return render(request, 'shop/checkout.html')
+    if request.method == "POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        address = request.POST.get('address', '')
+        address2 = request.POST.get('address2', '')
+        city = request.POST.get('city', '')
+        state = request.POST.get('state', '')
+        zip_code = request.POST.get('zip_code', '')
+        #print(name, email, phone, message)
+        order = Orders(name=name, email=email, phone=phone, address=address, address2=address2, city=city, state=state, zip_code=zip_code)
+        order.save()
+        thank = True
+        id = order.order_id
+    return render(request, 'shop/checkout.html',{'thank':thank, 'id':id})
 #     return HttpResponse("Index Contact")

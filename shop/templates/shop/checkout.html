@@ -9,7 +9,7 @@ Buy this Product- Djshop
       <u>Step-1 DjShop Quick Checkout | Review The cart Items</u>
     </h3>
     <div class="my-4">
-      <ul class="list-group" id="items">
+      <ul class="list-group shadow" id="items">
       </ul>
     </div>
   </div>
@@ -22,7 +22,7 @@ Buy this Product- Djshop
             <h1 class="text-center">Checkout-</h1>
           </div>
           <div class="card-body">
-            <form method="POST" action="/shop/checkout">
+            <form method="post" action="/shop/checkout/">
               {% csrf_token %}
               <input type="hidden" name="itemsJson" id="itemsJson">
               <div class="form-row">
@@ -33,8 +33,9 @@ Buy this Product- Djshop
                   <input
                     type="text"
                     class="form-control rounded-pill shadow"
-                    id="inputAddress"
+                    id="address"
                     placeholder="North KORea.."
+                    name="address"
                   />
                 </div>
                 <div class="form-group col-md-6">
@@ -44,8 +45,9 @@ Buy this Product- Djshop
                   <input
                     type="text"
                     class="form-control rounded-pill shadow"
-                    id="inputAddress2"
+                    id="address2"
                     placeholder="25 Road, Arizona City..."
+                    name="address2"
                   />
                 </div>
               </div>
@@ -56,8 +58,9 @@ Buy this Product- Djshop
                 <input
                   type="text"
                   class="form-control rounded-pill shadow"
-                  id="inputName"
+                  id="name"
                   placeholder="Enter Name..."
+                  name="name"
                 />
               </div>
               <div class="form-group">
@@ -67,8 +70,9 @@ Buy this Product- Djshop
                 <input
                   type="email"
                   class="form-control rounded-pill shadow"
-                  id="inputEmail"
+                  id="email"
                   placeholder="Enter Email..."
+                  name="email"
                 />
               </div>
               <div class="form-group">
@@ -78,8 +82,9 @@ Buy this Product- Djshop
                 <input
                   type="number"
                   class="form-control rounded-pill shadow"
-                  id="inputPhone"
+                  id="phone"
                   placeholder="Phone No..."
+                  name="phone"
                 />
               </div>
               <div class="form-row">
@@ -90,8 +95,9 @@ Buy this Product- Djshop
                   <input
                     type="text"
                     class="form-control rounded-pill shadow"
-                    id="inputCity"
+                    id="city"
                     placeholder="Enter City..."
+                    name="city"
                   />
                 </div>
                 <div class="form-group col-md-4">
@@ -101,8 +107,9 @@ Buy this Product- Djshop
                   <input
                     type="text"
                     class="form-control rounded-pill shadow"
-                    id="inputCity"
+                    id="state"
                     placeholder="Enter State..."
+                    name="state"
                   />
                 </div>
                 <div class="form-group col-md-2">
@@ -112,8 +119,9 @@ Buy this Product- Djshop
                   <input
                     type="number"
                     class="form-control rounded-pill shadow"
-                    id="inputZip"
+                    id="zip_code"
                     placeholder="Zip..."
+                    name="zip_code"
                   />
                 </div>
               </div>
@@ -171,5 +179,11 @@ Buy this Product- Djshop
   }
 
   document.getElementById('cart').innerHTML = sum;
+  $('#itemsJson').val(JSON.stringify(cart));
+  {% if thank %}
+  alert('Thanks for ordering. Your order ID: {{id}}. Use it to track your Order by Tracker');
+  localStorage.clear();
+  {% endif %}
 </script>
-{% endblock js %} {% endblock body %}
+{% endblock js %} 
+{% endblock body %}
