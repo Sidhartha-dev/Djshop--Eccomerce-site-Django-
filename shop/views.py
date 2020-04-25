@@ -45,7 +45,7 @@ def contact(request):
         contact = Contact(name=name, email=email, phone=phone, message=message)
         contact.save()
     
-    return render(request, 'shop/contact.html')
+        return render(request, 'shop/contact.html')
     # return HttpResponse("Index Contact")
 
 def tracker(request):
@@ -79,5 +79,6 @@ def checkout(request):
         order.save()
         thank = True
         id = order.order_id
-    return render(request, 'shop/checkout.html',{'thank':thank, 'id':id})
+        return render(request, 'shop/checkout.html', {'thank':thank,'id':id})
+    return render(request, 'shop/checkout.html')
 #     return HttpResponse("Index Contact")
