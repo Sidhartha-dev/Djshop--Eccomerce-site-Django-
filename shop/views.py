@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Product
 from .models import Contact
 from .models import Orders
+from .models import OrderUpdate
+import json
 from django.http import HttpResponse
 from math import ceil
 
@@ -49,7 +51,22 @@ def contact(request):
     # return HttpResponse("Index Contact")
 
 def tracker(request):
-    return render(request, 'shop/tracker.html')
+    if request.method == "POST":
+        orderId = request.POST.get('orderId', '')
+        email = request.POST.get('email', '')
+        try:
+            order= Orders.objects.filter(order_id=OrderId, email=email)
+            if len(order)>0:
+                update = OrderUpdate.objects.filter(order_id=orderId)
+                updates = []
+                for item in update:
+                    updates.append({'text': item.update_desc, 'time':item.timestamp})
+                    response = json.dumps(updates)
+                    return HttpResponse(response)
+            else:
+                pass
+
+        return render(request, 'shop/tracker.html')
 #     return HttpResponse("Index Contact")
 
 # def search(request):
@@ -78,6 +95,8 @@ def checkout(request):
         #print(name, email, phone, message)
         order = Orders(items_json=items_json, name=name, email=email, phone=phone, address=address, address2=address2, city=city, state=state, zip_code=zip_code)
         order.save()
+        update = OrderUpdate(order_id=order.order_id, update_desc="The order placed successsfully")
+        update.save()
         thank = True
         id = order.order_id
         return render(request, 'shop/checkout.html', {'thank':thank,'id':id})
