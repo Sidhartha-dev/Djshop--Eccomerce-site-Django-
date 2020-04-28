@@ -10,9 +10,9 @@ track this Product- Djshop
     </h3>
     <h5 class="text-danger">To Track your order Put your order Id and Email Address</h5>
     <div class="my-4">
-      <form method="post" action="/shop/checkout/">
+      <form method="post" action="#" id="trackerForm">
           {% csrf_token %}
-           <input type="number" name="OrderId" id="OrderId" class="form-control my-4 rounded-pill shadow col-md-6" placeholder="Order Id"> 
+           <input type="number" name="orderId" id="orderId" class="form-control my-4 rounded-pill shadow col-md-6" placeholder="Order Id"> 
            <input type="email" name="email" id="email" class="form-control my-4 rounded-pill shadow col-md-6" placeholder="Enter Email..."> 
            <button class="btn btn-warning rounded-pill shadow mt-4">Track Order</button>
         </form>
@@ -32,38 +32,47 @@ track this Product- Djshop
 
 {% block js %}
 <script>
-  if (localStorage.getItem("cart") == null) {
-    var cart = {};
-  } else {
-    cart = JSON.parse(localStorage.getItem("cart"));
-  }
-  console.log(cart);
-  var sum = 0;
-  if ($.isEmptyObject(cart)){
-    //if object is empty
-    mystr = '<h3 class="text-danger">Your cart Is empty, Add some items in your cart before checkout</h3>'
-    $('#items').append(mystr);
-  }else{
-   for(item in cart){
-     let name = cart[item][1];
-     let qty = cart[item][0];
-     sum = sum + qty;
-     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-       ${name}
-          <span class="badge badge-success badge-pill">${qty}</span>
+$('#trackerForm').submit(function(event){
+   $('#items').empty();
+   var formData = {
+     'orderId': $('input[name=orderId]').val(),
+     'email': $('input[name=email]').val(),
+     'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+   };
+   $.ajax({
+     type:'POST',
+     url:'/shop/tracker/',
+     data: formData,
+     encode:true
+   })
+
+   .done(function (data) {
+     console.log(data)
+     updates= JSON.parse(data);
+     if (updates.length > 0 & updates !={}) { 
+     for (i = 0; i < updates.length; i++) {
+       let text = updates[i]['text'];
+       let time = updates[i]['time'];
+       mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+       ${text}
+          <span class="badge badge-success badge-pill">${time}</span>
      </li>`
 
-     $('#items').append(mystr);
+       $('#items').append(mystr);
+     }
    }
-  }
+   else{
+     mystr = `<li class="list-group-item d-flex justify-content-between align-items-center bg-danger text-white">
+       sorry ! No tracking items found
+     </li>`
 
-  document.getElementById('cart').innerHTML = sum;
-  $('#itemsJson').val(JSON.stringify(cart));
-  {% if thank %}
-  alert('Thanks for ordering. Your order ID: {{id}}. Use it to track your Order by Tracker');
-  localStorage.clear();
-  document.location ="/shop"
-  {% endif %}
+       $('#items').append(mystr);
+   }
+
+   });
+   event.preventDefault();
+
+});
 </script>
 {% endblock js %} 
 {% endblock body %}
