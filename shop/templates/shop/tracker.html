@@ -26,6 +26,13 @@ track this Product- Djshop
            <p>Enter The order Id and email to track your order</p>
        </ul>
     </div>
+
+    <h3>Your Order details</h3>
+    <div class="my-4">
+      <ul class="list-group" id="citems">
+        <p>Enter The order Id and email to know the details of your order</p>
+      </ul>
+    </div>
   </div>
   
 </div>
@@ -48,7 +55,8 @@ $('#trackerForm').submit(function(event){
 
    .done(function (data) {
      console.log(data)
-     updates= JSON.parse(data);
+     data = JSON.parse(data);
+     updates= data[0];
      if (updates.length > 0 & updates !={}) { 
      for (i = 0; i < updates.length; i++) {
        let text = updates[i]['text'];
@@ -69,6 +77,19 @@ $('#trackerForm').submit(function(event){
        $('#items').append(mystr);
    }
 
+   //fill the order details
+   cart = JSON.parse(data[1]);
+   console.log(cart);
+   for (item in cart) {
+       let name = cart[item][1];
+       let qty = cart[item][0];
+       mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+       ${name}
+          <span class="badge badge-success badge-pill">${qty}</span>
+     </li>`
+
+       $('#citems').append(mystr);
+     }
    });
    event.preventDefault();
 
