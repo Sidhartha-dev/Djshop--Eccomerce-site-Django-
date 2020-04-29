@@ -41,6 +41,7 @@
             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+              <h6 class="btn btn-warning rounded-pill" id="pricepr{{i.id}}">{{i.price}} Rs</h6>
               <h6 class="card-text">{{i.desc|slice:'0:54'}}...</h6>
               <span id="divpr{{i.id}}" class="divpr">
               <button id="pr{{i.id}}" class="btn-success rounded-pill cart"><i class="fa fa-shopping-cart text-warning"></i>Add To Cart</button>
