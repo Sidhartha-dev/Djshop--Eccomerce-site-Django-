@@ -11,6 +11,7 @@ Buy this Product- Djshop
     <div class="my-4">
       <ul class="list-group shadow" id="items">
       </ul>
+      <span id="totalPrice"></span>
     </div>
   </div>
   <div class="col">
@@ -160,6 +161,7 @@ Buy this Product- Djshop
   }
   console.log(cart);
   var sum = 0;
+  var totalPrice = 0;
   if ($.isEmptyObject(cart)){
     //if object is empty
     mystr = '<h3 class="text-danger">Your cart Is empty, Add some items in your cart before checkout</h3>'
@@ -168,7 +170,9 @@ Buy this Product- Djshop
    for(item in cart){
      let name = cart[item][1];
      let qty = cart[item][0];
+     let itemPrice = cart[item][2];
      sum = sum + qty;
+     totalPrice = totalPrice + qty* itemPrice
      mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
        ${name}
           <span class="badge badge-success badge-pill">${qty}</span>
@@ -179,6 +183,7 @@ Buy this Product- Djshop
   }
 
   document.getElementById('cart').innerHTML = sum;
+  document.getElementById('totalPrice').innerHTML = totalPrice;
   $('#itemsJson').val(JSON.stringify(cart));
   {% if thank %}
   alert('Thanks for ordering. Your order ID: {{id}}. Use it to track your Order by Tracker');

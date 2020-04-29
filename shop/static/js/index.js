@@ -18,7 +18,8 @@ $(".divpr").on("click", "button.cart", function () {
   } else {
     qty = 1;
     name = document.getElementById("name" + idstr).innerHTML;
-    cart[idstr] = [qty, name];
+    price = document.getElementById("price" + idstr).innerHTML;
+    cart[idstr] = [qty, name, parseInt(price)];
   }
   updateCart(cart);
   //console.log(cart);
@@ -36,7 +37,7 @@ function updatePopover(cart) {
     popStr = popStr + "<b>" + i + "</b>";
     popStr =
       popStr +
-      document.getElementById("name" + item).innerHTML.slice(0, 18) +
+      document.getElementById("name" + item).innerHTML.slice(0, 18) 
       "...Qty:" +
       cart[item][0] +
       "<br>";
