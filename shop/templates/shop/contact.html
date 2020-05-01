@@ -44,4 +44,13 @@ Contact us- If any problem
         </div>
     </div>
 </section>
+{% block js %}
+<script>
+{% if thank %}
+  alert('Thanks for ordering. Your order ID: {{id}}. Use it to track your Order by Tracker');
+  localStorage.clear();
+  document.location ="/shop/contact"
+  {% endif %}
+</script>
+{% endblock js %}
 {% endblock body %}

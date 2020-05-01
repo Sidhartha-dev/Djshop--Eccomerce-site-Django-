@@ -75,7 +75,7 @@ body .carousel-indicator li {
 }
 
 body .carousel-indicators {
-  bottom: 0;
+  bottom: -40px;
 }
 
 body .carousel-control-prev-icon,

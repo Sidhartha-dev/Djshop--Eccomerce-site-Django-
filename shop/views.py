@@ -38,6 +38,7 @@ def about(request):
     #return HttpResponse("Index shop")
 
 def contact(request):
+    thank = False
     if request.method=="POST":
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
@@ -46,8 +47,8 @@ def contact(request):
         print(name, email, phone, message)
         contact = Contact(name=name, email=email, phone=phone, message=message)
         contact.save()
-    
-        return render(request, 'shop/contact.html')
+        thank = True
+        return render(request, 'shop/contact.html', {'thank':thank})
     # return HttpResponse("Index Contact")
 
 def tracker(request):
