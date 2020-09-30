@@ -1,0 +1,2 @@
+#All the packages required for the project
+django==3.0
